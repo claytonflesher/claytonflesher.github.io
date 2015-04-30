@@ -24,3 +24,29 @@ Over the last month, I've been doing less core Ruby, because I've been learning 
 I've covered DSL's a little bit, but not enough to pretend I really understand it, and I'm going to get around to metaprogramming soon.
 
 ## Strategy -- 
+
+I've covered a lot of basic coding strategy. At some point I'll do a full post on the Agile Manifesto.
+
+One of the things it took me a long time to get any good at was "Don't Repeat Yourself (DRY)". I had a bad habit of repeating patterns, within code that only had small changes from code I'd already written. My instructor finally got me to come around with the following adage:
+
+If you write something more than once, you should cringe. If you write it more than twice, then it should be broken out into its own structure. 
+
+The recent lessons I've taken on polymorphism and duck typing will contribute to improving my code in this regard even further.
+
+## Unix --
+
+I covered basic shell, SSH and cron jobs. The main project I'm planning on doing next will require cron.
+
+## Git --
+
+Considering the host of this blog, I think I'll be okay on this one.
+
+## Web --
+
+This is my main focus right now. I recently finished Jon Duckett's wonderful HTML & CSS textbook. I will write about it in more detail in the future. His JavaScript and JQuery book is my current project. I just reached the JQuery chapter.
+
+I believe my next step in web development will be 'Sinatra'.
+
+## SQL and Rails --
+
+I haven't checked any of the boxes on these yet. I'm approaching Rails entirely from the bottom up. I want to be able to do as much as possible in Ruby, before I ever try to do it in Rails.
