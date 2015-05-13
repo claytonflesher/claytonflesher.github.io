@@ -57,7 +57,7 @@ end
 statment = ARGV.last
 puts Scanner.new(statment).run
 ```
-This program can get incredibly long to bogged down quite easily. The main reason is because of our <code>run</code> method.
+This program can get incredibly bogged down quite easily. The main reason is because of our <code>run</code> method.
 
 What it is doing is taking every permutation of the word we feed it and checking it against the entire dictionary, one line at a time. That can be relatively quick for very short words, like 'rat'.
 
