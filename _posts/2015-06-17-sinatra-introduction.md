@@ -157,6 +157,7 @@ If we start with a very basic User object, that contains maybe three things, an 
 Initially, our User object is going to look something like this...
 
 ```ruby
+
 require 'bcrypt'
 
 module Todo
