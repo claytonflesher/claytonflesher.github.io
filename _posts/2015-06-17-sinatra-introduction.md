@@ -67,8 +67,7 @@ We need to create a `views` directory. Right now, we need to put two files insid
 
 Our layout file will look like this.
 
-```html
-<!DOCTYPE html>
+<pre><!DOCTYPE html>
 <html>
   <head>
 
@@ -79,9 +78,7 @@ Our layout file will look like this.
   <body>
     <%= yield %>
   </body>
-</html>
-
-```
+</html></pre>
 
 This layout page allows us to render the whole website using the same css stylesheet without having to add it to every other ERB file. Our `login.erb` will then use the same css formatting as our `dashboard.erb` and our `sign_up.erb`.
 
