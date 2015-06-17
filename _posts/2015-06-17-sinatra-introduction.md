@@ -102,20 +102,6 @@ Now that we have a layout, we can create our Login page.
 
 In it's simplest version, it'll need to have a form that calls our `post "/login" do` and sends it an email and a password.
 
-It might look like this.
-
-```html
-<!DOCTYPE html>
-<h1>Login Page</h1>
-<form id="login" action="/login" method="POST">
-  <input type="text" placeholder="email" name="email"><br>
-  <input type="password" placeholder="password" name="password"><br>
-  <input type="submit" value="login">
-</form>
-</html>
-
-```
-
 That should allow us to fill out a form, and then submit it to see if we are a valid user. Of course, we'll have to write a Sign Up page as well, so that we can create that user. But right now let's assume we've got that and we are just trying to authenticate our user.
 
 ##Sending to the Database
