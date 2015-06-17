@@ -105,13 +105,14 @@ In it's simplest version, it'll need to have a form that calls our `post "/login
 It might look like this.
 
 ```html
-
+<!DOCTYPE html>
 <h1>Login Page</h1>
 <form id="login" action="/login" method="POST">
   <input type="text" placeholder="email" name="email"><br>
   <input type="password" placeholder="password" name="password"><br>
   <input type="submit" value="login">
 </form>
+</html>
 
 ```
 
