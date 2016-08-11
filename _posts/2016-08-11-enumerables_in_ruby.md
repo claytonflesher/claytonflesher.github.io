@@ -44,12 +44,20 @@ Ruby documentation: Passes each element of the collection to the given block. Th
 Example: Let's say I wanted to know if all of the items in an array are greater than 10.
 
 The enumerable would look like this:
-`[11, 12, 11, 400, 21].all? { |n| n > 10 } # returns true`
-`[11, 9, 11, 400, 21].all?  { |n| n > 10 } # returns false`
+```
+[11, 12, 11, 400, 21].all? { |n| n > 10 } # returns true
+```
+```
+[11, 9, 11, 400, 21].all?  { |n| n > 10 } # returns false
+```
 
 Our new one looks like this:
-`[11, 12, 11, 400, 21].inject(true) { |memo, n| memo && n > 10 } # returns true`.
-`[11, 9, 11, 400, 21].inject(true)  { |memo, n| memo && n > 10 } # returns false`.
+```
+[11, 12, 11, 400, 21].inject(true) { |memo, n| memo && n > 10 } # returns true
+```
+```
+[11, 9, 11, 400, 21].inject(true)  { |memo, n| memo && n > 10 } # returns false
+```
 
 In JavaScript, there is an `Array.prototype.every()` method that serves the same function, but we're going to do this with `inject`, because we can.
 In JavaScript:
@@ -67,18 +75,30 @@ Ruby documentation: Passes each element of the collection to the given block. Th
 Example: Let's say I wanted to know if any of the items in an array are greater than 10.
 
 The enumerable would look like this:
-`[9, 1, 5, 13, 9].any? { |n| n > 10 } # returns true`
-`[9, 1, 5, 3, 9].any?  { |n| n > 10 } # returns false`
+```
+[9, 1, 5, 13, 9].any? { |n| n > 10 } # returns true
+```
+```
+[9, 1, 5, 3, 9].any?  { |n| n > 10 } # returns false
+```
 
 Our new one looks like this:
-`[9, 1, 5, 13, 9].inject(false) { |memo, n| memo || n > 10 }` returns `true`.
-`[9, 1, 5, 3, 9].inject(false) { |memo, n| memo || n > 10 }` returns `false`.
+```
+[9, 1, 5, 13, 9].inject(false) { |memo, n| memo || n > 10 }` returns `true`
+```
+```
+[9, 1, 5, 3, 9].inject(false) { |memo, n| memo || n > 10 }` returns `false`
+```
 
 In JavaScript, there is an `Array.prototype.some()` method that serves the same function, but we're going to do this with `inject`, because we can and because `some()` is a stupid name for it.
 In JavaScript:
 In JavaScript:
-`[9, 1, 5, 13, 9].reduce(function(memo, n) { return memo || n > 10; }, false); returns `true`.
-`[9, 1, 5, 3, 9].reduce(function(memo, n) { return memo || n > 10 ;}, false);` returns `false`.
+```
+[9, 1, 5, 13, 9].reduce(function(memo, n) { return memo || n > 10; }, false); returns `true`.
+```
+```
+[9, 1, 5, 3, 9].reduce(function(memo, n) { return memo || n > 10 ;}, false);` returns `false`.
+```
 
 ## collect/map
 
@@ -90,14 +110,20 @@ If no block is given, an enumerator is returned instead.
 Example: Let's say I wanted to multiply every number in an array by 2.
 
 The enumerable would look like this:
-`[1, 2, 3, 4, 5].map { |n| n * 2 }
+```
+[1, 2, 3, 4, 5].map { |n| n * 2 }
+```
 
 Our new one would look like this:
-`[1, 2, 3, 4, 5].inject([]) { |memo, n| memo << n * 2 }`
+```
+[1, 2, 3, 4, 5].inject([]) { |memo, n| memo << n * 2 }
+```
 
 JavaScript has an `Array.prototype.map()`, but we're doing things the hard way, so let's do it with `reduce`.
 In JavaScript:
-`[1, 2, 3, 4, 5].reduce(function(memo, n) { return memo.concat(n * 2); }, []);`
+```
+[1, 2, 3, 4, 5].reduce(function(memo, n) { return memo.concat(n * 2); }, []);
+```
 
 ## collect_concat/flat_map
 
@@ -109,13 +135,19 @@ If no block is given, an enumerator is returned instead.
 Example: Let's say I wanted to append a `1` at the end of ever sub-array of `[1, 2, 3], [4, 5, 6]]` and return a flattened array like this `[1, 2, 3, 1, 4, 5, 6, 1]`.
 
 The enumerable would look like this:
-`[[1, 2, 3], [4, 5, 6]].flat_map { |array| array << 1 } # returns [1, 2, 3, 1, 4, 5, 6, 1]
+```
+[[1, 2, 3], [4, 5, 6]].flat_map { |array| array << 1 } # returns [1, 2, 3, 1, 4, 5, 6, 1]
+```
 
 Our new one:
-`[[1, 2, 3], [4, 5, 6]].inject([]) { |memo, n| memo += n << 1 }` # returns [1, 2, 3, 1, 4, 5, 6, 1]`
+```
+[[1, 2, 3], [4, 5, 6]].inject([]) { |memo, n| memo += n << 1 }` # returns [1, 2, 3, 1, 4, 5, 6, 1]`
+```
 
 In JavaScript:
-`[[1, 2, 3], [4, 5, 6]].reduce(function(memo, n) { return memo.concat(n.concat(1)); }, []);`
+```
+[[1, 2, 3], [4, 5, 6]].reduce(function(memo, n) { return memo.concat(n.concat(1)); }, []);
+```
 It isn't pretty, but it works.
 
 ## count
@@ -127,7 +159,9 @@ Example: As usual, we're ignoring the non-block examples and using the ones that
 Let's say we want to count the number of items in an array that are multiples of 3.
 
 With count:
-`[1, 2, 3, 4, 5, 6].count { |n| n % 3 == 0 } # returns 2`
+```
+[1, 2, 3, 4, 5, 6].count { |n| n % 3 == 0 } # returns 2
+```
 
 With our custom inject:
 ```ruby
@@ -155,7 +189,9 @@ If no block is given, an enumerator is returned instead.
 Let's assume you're going to be passing it a number of times to run, and that'll be our memo when we use `inject`.
 
 With cycle:
+```
 [1, 2, 3].cycle(3) { |n| puts n } # prints 1 2 3 1 2 3 1 2 3
+```
 
 With our custom inject?
 
@@ -169,7 +205,9 @@ If no block is given, an enumerator is returned instead.
 Let's say we want to find the first number in an array that is divisble by 5.
 
 With find:
-`[1, 2, 3, 4, 5, 6].find { |n| n % 5 == 0 } # returns 5`
+```
+[1, 2, 3, 4, 5, 6].find { |n| n % 5 == 0 } # returns 5
+```
 
 There is almost certainly a cleaner way to do this, but I got it working with...
 Custom inject:
@@ -212,7 +250,9 @@ If no block is given, an enumerator is returned instead.
 Let's say we want to remove every item from our array leading up to 3.
 
 With drop_while:
-`[1, 2, 3, 4, 5, 1].drop_while { |n| n < 3 } # returns [3, 4, 5, 1]`
+```
+[1, 2, 3, 4, 5, 1].drop_while { |n| n < 3 } # returns [3, 4, 5, 1]
+```
 
 With inject:
 ```ruby
