@@ -26,7 +26,7 @@ When `ThatObject#inject` is called, it takes on optional `memo` as an argument a
 
 So, for example, let's say we wanted to sum the numbers in `[1, 2, 3]`.
 
-We could call `[1, 2, 3].inject(0) { |memo, number| memo + number }'.
+We could call `[1, 2, 3].inject(0) { |memo, number| memo + number }`.
 There is a shorter way to do this, but I'm writing it this way because it's the most explicit and explains exactly what is going on.
 
 I this case, we passed `0` as an argument, so that made `0` our initial memo. The block to `0` and `1`, and added them, returning the result as the NEW memo. Then it took that memo, passed it to the block with `2`, summed those, returned another new memo, etc. until it reaches the end of the array. The final returned memo is the result of our summed array.
