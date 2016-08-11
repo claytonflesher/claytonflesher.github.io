@@ -20,7 +20,7 @@ I'm going to do this for `Array`, because it's easiest for new programmers to fo
 
 I'm also going to, at least in this post, skip the enumerables that, when called even with a block, return an `Enumerable`.
 
-First, a little lesson on how `Enumrable#inject` actually works. It is a method that you can call on any object in which `ThatObject#each` is defined and the `Enumerable` module is mixed in.
+First, a little lesson on how `Enumerable#inject` actually works. It is a method that you can call on any object in which `ThatObject#each` is defined and the `Enumerable` module is mixed in.
 
 When `ThatObject#inject` is called, it takes on optional `memo` as an argument and passes the memo and whatever the current value on the list is to the block, performing the logic and returning the `memo` as an accumulator.
 
@@ -29,7 +29,7 @@ So, for example, let's say we wanted to sum the numbers in `[1, 2, 3]`.
 We could call `[1, 2, 3].inject(0) { |memo, number| memo + number }`.
 There is a shorter way to do this, but I'm writing it this way because it's the most explicit and explains exactly what is going on.
 
-I this case, we passed `0` as an argument, so that made `0` our initial memo. The block to `0` and `1`, and added them, returning the result as the NEW memo. Then it took that memo, passed it to the block with `2`, summed those, returned another new memo, etc. until it reaches the end of the array. The final returned memo is the result of our summed array.
+In this case, we passed `0` as an argument, so that made `0` our initial memo. Initially, reduce passes `0`, our memo,  and `1`, the first item in our array, to the block. It adds them, returning the result as the NEW memo. Then it took that memo, passed it to the block with `2`, summed those, returned another new memo, etc. until it reaches the end of the array. The final returned memo is the result of our summed array.
 
 You can do this without passing an initial `0` memo and it will still work, because by default `inject` uses the first item in the array as the memo and passes it to the second item in the array.
 
