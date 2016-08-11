@@ -44,25 +44,35 @@ Ruby documentation: Passes each element of the collection to the given block. Th
 Example: Let's say I wanted to know if all of the items in an array are greater than 10.
 
 The enumerable would look like this:
-```
+
+```ruby
 [11, 12, 11, 400, 21].all? { |n| n > 10 } # returns true
 ```
-```
+
+```ruby
 [11, 9, 11, 400, 21].all?  { |n| n > 10 } # returns false
 ```
 
 Our new one looks like this:
-```
+
+```ruby
 [11, 12, 11, 400, 21].inject(true) { |memo, n| memo && n > 10 } # returns true
 ```
-```
+
+```ruby
 [11, 9, 11, 400, 21].inject(true)  { |memo, n| memo && n > 10 } # returns false
 ```
 
 In JavaScript, there is an `Array.prototype.every()` method that serves the same function, but we're going to do this with `inject`, because we can.
 In JavaScript:
-`[11, 12, 11, 400, 21].reduce(function(memo, n) { return memo && n > 10; }); // returns true`.
-`[11, 9, 11, 400, 21].reduce(function(memo, n)  { return memo && n > 10; }); // returns false`.
+
+```javascript
+[11, 12, 11, 400, 21].reduce(function(memo, n) { return memo && n > 10; }); // returns true
+```
+
+```javascript
+[11, 9, 11, 400, 21].reduce(function(memo, n)  { return memo && n > 10; }); // returns false
+```
 
 Notice that we are passing the memo of `true` as the second argument to `Array.prototype.reduce()`. In JavaScript, you pass the callback function first, and the initial value of the memo, if needed, second.
 
@@ -75,28 +85,33 @@ Ruby documentation: Passes each element of the collection to the given block. Th
 Example: Let's say I wanted to know if any of the items in an array are greater than 10.
 
 The enumerable would look like this:
-```
+
+```ruby
 [9, 1, 5, 13, 9].any? { |n| n > 10 } # returns true
 ```
-```
+
+```ruby
 [9, 1, 5, 3, 9].any?  { |n| n > 10 } # returns false
 ```
 
 Our new one looks like this:
-```
+
+```ruby
 [9, 1, 5, 13, 9].inject(false) { |memo, n| memo || n > 10 }` returns `true`
 ```
-```
+
+```ruby
 [9, 1, 5, 3, 9].inject(false) { |memo, n| memo || n > 10 }` returns `false`
 ```
 
 In JavaScript, there is an `Array.prototype.some()` method that serves the same function, but we're going to do this with `inject`, because we can and because `some()` is a stupid name for it.
 In JavaScript:
-In JavaScript:
-```
+
+```javascript
 [9, 1, 5, 13, 9].reduce(function(memo, n) { return memo || n > 10; }, false); returns `true`.
 ```
-```
+
+```javascript
 [9, 1, 5, 3, 9].reduce(function(memo, n) { return memo || n > 10 ;}, false);` returns `false`.
 ```
 
@@ -110,18 +125,21 @@ If no block is given, an enumerator is returned instead.
 Example: Let's say I wanted to multiply every number in an array by 2.
 
 The enumerable would look like this:
-```
+
+```ruby
 [1, 2, 3, 4, 5].map { |n| n * 2 }
 ```
 
 Our new one would look like this:
-```
+
+```ruby
 [1, 2, 3, 4, 5].inject([]) { |memo, n| memo << n * 2 }
 ```
 
 JavaScript has an `Array.prototype.map()`, but we're doing things the hard way, so let's do it with `reduce`.
 In JavaScript:
-```
+
+```javascript
 [1, 2, 3, 4, 5].reduce(function(memo, n) { return memo.concat(n * 2); }, []);
 ```
 
@@ -135,17 +153,20 @@ If no block is given, an enumerator is returned instead.
 Example: Let's say I wanted to append a `1` at the end of ever sub-array of `[1, 2, 3], [4, 5, 6]]` and return a flattened array like this `[1, 2, 3, 1, 4, 5, 6, 1]`.
 
 The enumerable would look like this:
-```
+
+```ruby
 [[1, 2, 3], [4, 5, 6]].flat_map { |array| array << 1 } # returns [1, 2, 3, 1, 4, 5, 6, 1]
 ```
 
 Our new one:
-```
+
+```ruby
 [[1, 2, 3], [4, 5, 6]].inject([]) { |memo, n| memo += n << 1 }` # returns [1, 2, 3, 1, 4, 5, 6, 1]`
 ```
 
 In JavaScript:
-```
+
+```javascript
 [[1, 2, 3], [4, 5, 6]].reduce(function(memo, n) { return memo.concat(n.concat(1)); }, []);
 ```
 It isn't pretty, but it works.
@@ -159,11 +180,13 @@ Example: As usual, we're ignoring the non-block examples and using the ones that
 Let's say we want to count the number of items in an array that are multiples of 3.
 
 With count:
-```
+
+```ruby
 [1, 2, 3, 4, 5, 6].count { |n| n % 3 == 0 } # returns 2
 ```
 
 With our custom inject:
+
 ```ruby
 [1, 2, 3, 4, 5, 6].inject(0) do |memo, n|
   n % 3 == 0 ? memo + 1 : memo
@@ -171,6 +194,7 @@ end # returns 2
 ```
 
 In JavaScript:
+
 ```javascript
 [1, 2, 3, 4, 5, 6].reduce(
   function(memo, n) {
@@ -189,7 +213,8 @@ If no block is given, an enumerator is returned instead.
 Let's assume you're going to be passing it a number of times to run, and that'll be our memo when we use `inject`.
 
 With cycle:
-```
+
+```ruby
 [1, 2, 3].cycle(3) { |n| puts n } # prints 1 2 3 1 2 3 1 2 3
 ```
 
@@ -205,12 +230,14 @@ If no block is given, an enumerator is returned instead.
 Let's say we want to find the first number in an array that is divisble by 5.
 
 With find:
-```
+
+```ruby
 [1, 2, 3, 4, 5, 6].find { |n| n % 5 == 0 } # returns 5
 ```
 
 There is almost certainly a cleaner way to do this, but I got it working with...
 Custom inject:
+
 ```ruby
 [1, 2, 3, 4, 5, 6].inject(nil) do |memo, n|
   if memo
@@ -226,6 +253,7 @@ end
 JavaScript has an `Array.prototype.find()`, so please don't do this in the wild, but...
 
 In JavaScript:
+
 ```javascript
 [1, 2, 3, 4, 5, 6].reduce(function(memo, n) {
   if (memo) {
@@ -250,11 +278,13 @@ If no block is given, an enumerator is returned instead.
 Let's say we want to remove every item from our array leading up to 3.
 
 With drop_while:
-```
+
+```ruby
 [1, 2, 3, 4, 5, 1].drop_while { |n| n < 3 } # returns [3, 4, 5, 1]
 ```
 
 With inject:
+
 ```ruby
 [1, 2, 3, 4, 5, 1].inject(nil) do |memo, n|
   next if memo.nil? && n < 3
@@ -263,6 +293,7 @@ end
 ```
 
 With JavaScript:
+
 ```javascript
 [1, 2, 3, 4, 5, 1].reduce(function(memo, n){
   if (memo == null && n < 3){
@@ -272,6 +303,7 @@ With JavaScript:
   }
 }, null);
 ```
+
 ## each_cons
 
 Ruby documentation: Iterates the given block for each array of consecutive <n> elements. If no block is given, returns an enumerator.
@@ -293,6 +325,7 @@ See each_cons
 Calls block with two arguments, the item and its index, for each item in enum. Given arguments are passed through to each().
 
 With each_with_index:
+
 ```ruby
 hash = Hash.new
 %w(cat dog wombat cat).each_with_index { |item, index| hash[item] = index }
@@ -302,6 +335,7 @@ hash #=> {"cat"=>0, "dog"=>1, "wombat"=>2}
 Ruby's each_with_index is actually the perfect example case where reduce/inject should almost universally be preferred. You can get exactly the same behaviour, without needing the hash declaration in the line above. But anyway, here's an example.
 
 With inject:
+
 ```ruby
 hash = Hash.new
 %w(cat dog wombat).inject(0) do |memo, animal|
@@ -310,8 +344,9 @@ hash = Hash.new
 end
 ```
 
-```javascript
 With JavaScript:
+
+```javascript
 hash = {}
 ["cat", "dog", "wombat"].reduce(function(memo, n){
   hash[n] = memo;
