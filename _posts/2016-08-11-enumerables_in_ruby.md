@@ -347,10 +347,10 @@ end
 With JavaScript:
 
 ```javascript
-hash = {}
+hash = {};
 ["cat", "dog", "wombat"].reduce(function(memo, n){
   hash[n] = memo;
-  memo += 1;
+  return memo += 1;
 }, 0);  
 ```
 
