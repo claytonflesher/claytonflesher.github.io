@@ -328,7 +328,7 @@ With each_with_index:
 
 ```ruby
 hash = Hash.new
-%w(cat dog wombat cat).each_with_index { |item, index| hash[item] = index }
+%w(cat dog wombat).each_with_index { |item, index| hash[item] = index }
 hash #=> {"cat"=>0, "dog"=>1, "wombat"=>2}
 ```
 
