@@ -176,7 +176,7 @@ Apparently, BCrypt actually uses Ruby's open classes to redefine the `==` method
 
 I'm going to cut the Sinatra tutorial off there. I encourage you to give it a look. My favorite thing about Sinatra, especially with small applications, is that it doesn't create a bunch of unnecessary directories and paths in your code. You only get out what you put in.
 
-If you want to see my completed, working ToDo Sinatra app, I have it up on Github [here](https://github.com/Calvyn82/todo).
+If you want to see my completed, working ToDo Sinatra app, I have it up on Github [here](https://github.com/claytonflesher/todo).
 
 [^1]: 
 Sinatra has something else you can use for user authentication called [Warden](https://github.com/jsmestad/sinatra_warden). We're building our own today. The whole point of me using Sinatra is so that I get closer to the code and have a better understanding of how the application is actually functioning. Writing my own user authentication is part of that, even if it doesn't provide the same detail of coverage as a gem might.
