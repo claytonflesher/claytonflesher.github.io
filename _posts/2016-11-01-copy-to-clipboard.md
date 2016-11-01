@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Copy to System Clipboard in Elm
-```
+---
+
 # How to Copy to the System Clipboard in Elm, and Why it Works
 
 Since the release of Elm 0.17, there has not been an agreed upon way to copy to the system clipboard form inside of Elm. This article will show you how to do so, without having to make use of any Elm Native libraries, flash, or writing a bunch of JavaScript.
