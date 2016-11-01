@@ -5,15 +5,15 @@ title: Copy to System Clipboard in Elm
 
 # How to Copy to the System Clipboard in Elm, and Why it Works
 
-Since the release of Elm 0.17, there has not been an agreed upon way to copy to the system clipboard form inside of Elm. This article will show you how to do so, without having to make use of any Elm Native libraries, flash, or writing a bunch of JavaScript.
+Since the release of Elm 0.17, there has not been an agreed upon way to copy to the system clipboard from inside of Elm. This article will show you how to do so, without having to make use of any Elm Native libraries, flash, or writing a bunch of JavaScript.
 
 ## Skip to a Code Example
 
-If you want to cargo cult this, you can skip straight to a code example of this technique in practice, (here)[https://github.com/JEG2/elm_clipboard_test]
+If you want to cargo cult this, you can skip straight to a code example of this technique in practice, [here](https://github.com/JEG2/elm_clipboard_test)
 
 ## Copying to the System Clipboard
 
-First, you will need to get [Clipboard.js](https://clipboardjs.com/), a JavaScript library, and include a call to it in your `<header>`. The easiest way to do this is by making use of one of the several (third-party CDN providers)[https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers].
+First, you will need to get [Clipboard.js](https://clipboardjs.com/), a JavaScript library, and include a call to it in your `<header>`. The easiest way to do this is by making use of one of the several [third-party CDN providers](https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers).
 
 Once you've sourced the Clipboard.js file, add the following to the body.
 
@@ -58,4 +58,4 @@ By attaching these event listeners on the buttons, it avoids the layer of indire
 
 ## Thanks
 
-This blog post would never have been written without the help of James Edward Gray II, who helped me walk through this problem and figure out why Clipboard.js was working and our solutions were not. You can find an example of working application that uses this technique (here)[https://github.com/JEG2/elm_clipboard_test] and an example of this technique used in a Sinatra app with an Elm front-end on (here)[https://github.com/claytonflesher/oorb_sinatra_app].
+This blog post would never have been written without the help of James Edward Gray II, who helped me walk through this problem and figure out why Clipboard.js was working and our solutions were not. You can find an example of working application that uses this technique [here](https://github.com/JEG2/elm_clipboard_test) and an example of this technique used in a Sinatra app with an Elm front-end on [here](https://github.com/claytonflesher/oorb_sinatra_app).
