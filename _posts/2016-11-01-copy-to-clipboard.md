@@ -57,9 +57,9 @@ Clipboard.js does this for us, but isn't entirely clear how at first glance.
 
 Anyone who has tried to implement copying to the clipboard from Elm themselves, without using Clipboard.js, will likely have run into issues with it not working on Firefox. We originally tried to do this all with Elm sending a message to JavaScript world, and having some JS code that actually did the copy. This ran fine in Google Chrome, but Firefox threw an error in the console telling us that the thing doing the copying had to be getting a direct action by the user. We couldn't have a layer of indirection that sent a message on a click, and that message went to some JS that actually made the copy. That's a security faux pas.
 
-So, how does Clipboard.js solve this problem? It attaches an event listener to the `<body>`. That event listener then attaches event listeners directly on the elements that have the `data-clipboard-target` attribute specified to them. By attaching these event listeners on the buttons, it avoids the layer of indirection.
+So, how does Clipboard.js solve this problem? It attaches an event listener to the `<body>`. Whenever an event occurs, the listener checks to see if it is one of the kind that it is watching for. If so, it intercepts the call and performs the action itself, otherwise it lets the call move on down the tree.
 
-Because the top-level event-listener is on the body, when Elm re-renders the `div`, the top level listener persists and the listeners on the elements get recreated.
+Because the event-listener is on the body, when Elm re-renders the `div`, the listener persists.
 
 ## Thanks
 
