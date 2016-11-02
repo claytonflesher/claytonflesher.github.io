@@ -43,7 +43,7 @@ input [ type` "text", id "copy-me", onInput Change ] []
 We'll also need a button to click, to trigger the copy to the clipboard, along with an attribute that Clipboard.js recognizes and knows to target. `attribute` in Elm takes two arguments, the name of the attribute, and value assigned to that name.
 
 ```
-button [ class "copy-button", attribute "data-clipboard-target" "#copy-me" ] [text "Button Text"]
+button [ class "copy-button", attribute "data-clipboard-target" "#copy-me" ] []
 ```
 
 That should be it. Clipboard.js will create all of the listeners we need, and when we enter some text into our `input` and click on the `copy-button` button, it'll copy the text to our system clipboard.
