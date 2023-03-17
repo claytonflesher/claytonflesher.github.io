@@ -23,7 +23,9 @@ email: claytonflesher@gmail.com
 description: "Site for clayton's writings"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-mastadon_username: @claytonflesher
+mastodon:
+- username: claytonflesher
+  instance: genserver.social
 github_username:  claytonflesher
 
 # Build settings
